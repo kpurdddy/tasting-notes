@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Platform — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f8f5f0;
+    --cream: #f0ebe3;
+    --wine: #722f37;
+    --wine-light: #9b4d56;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --sage: #5a6b5a;
+    --muted: #7a7168;
+    --light-rule: #d5cec4;
+    --highlight: #fdf6e3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.5rem 4rem;
+    border-bottom: 1px solid var(--light-rule);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .site-name span {
+    color: var(--wine);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-links a.active { 
+    color: var(--wine);
+    border-bottom: 2px solid var(--wine);
+    padding-bottom: 2px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 4rem 4rem 3rem;
+    border-bottom: 1px solid var(--light-rule);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--wine);
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── COMPETITION FEATURE ── */
+  .competition-feature {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 4rem;
+  }
+
+  .comp-card {
+    background: white;
+    border: 1px solid var(--light-rule);
+    border-radius: 3px;
+    padding: 2.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--wine), var(--gold-light));
+  }
+
+  .comp-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--wine);
+    margin-bottom: 0.75rem;
+  }
+
+  .comp-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .comp-card h2 em { font-style: italic; }
+
+  .comp-description {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+  }
+
+  .comp-meta {
+    display: flex;
+    gap: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-rule);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .meta-label {
+    color: var(--muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+  }
+
+  .meta-value {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .meta-value.prize { color: var(--gold); }
+
+  .comp-enter {
+    margin-top: 1.5rem;
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--wine);
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .comp-enter:hover { background: var(--wine-light); }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .section-header a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--wine);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  /* ── TWO COLUMN LAYOUT ── */
+  .two-columns {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .divider-line {
+    grid-column: 1 / -1;
+    border: none;
+    border-top: 1px solid var(--light-rule);
+    margin: 0.5rem 0;
+  }
+
+  /* ── TASTING NOTES ── */
+  .tasting-note {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--light-rule);
+  }
+
+  .tasting-note:last-child { border-bottom: none; }
+
+  .tasting-film {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+
+  .tasting-film span {
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .tasting-reviewer {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .tasting-scores {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .score-pip {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    background: var(--cream);
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  .score-pip.highlight-good {
+    background: var(--wine);
+    color: white;
+  }
+
+  .score-pip.highlight-gold {
+    background: var(--gold);
+    color: white;
+  }
+
+  .tasting-excerpt {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ── COMMENTS OF THE WEEK ── */
+  .comment-entry {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--light-rule);
+  }
+
+  .comment-entry:last-child { border-bottom: none; }
+
+  .comment-source {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .comment-text {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .comment-context {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .comment-votes {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 600;
+    margin-top: 0.4rem;
+  }
+
+  /* ── PAST WINNERS ── */
+  .winners-strip {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 4rem 3rem;
+  }
+
+  .winners-strip h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+  }
+
+  .winner-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .winner-card {
+    background: white;
+    border: 1px solid var(--light-rule);
+    border-radius: 3px;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .winner-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .winner-badge::before {
+    content: '◆';
+    font-size: 0.5rem;
+  }
+
+  .winner-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 0.25rem;
+    line-height: 1.35;
+  }
+
+  .winner-author {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .winner-excerpt {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--light-rule);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.6s ease-out; }
+  .comp-card { animation: fadeUp 0.6s ease-out 0.15s both; }
+  .two-columns > div:first-child { animation: fadeUp 0.6s ease-out 0.25s both; }
+  .two-columns > div:last-child { animation: fadeUp 0.6s ease-out 0.35s both; }
+  .winners-strip { animation: fadeUp 0.6s ease-out 0.45s both; }
+
+  /* ── PLACEHOLDER NAME ── */
+  .name-placeholder {
+    display: inline-block;
+    background: var(--cream);
+    border: 1px dashed var(--light-rule);
+    padding: 0 0.3em;
+    border-radius: 2px;
+    color: var(--muted);
+    font-style: normal;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="site-name"><span class="name-placeholder">[ Site Name ]</span></div>
+  <div class="nav-links">
+    <a class="active">Competitions</a>
+    <a>Tasting Notes</a>
+    <a>Comments of the Week</a>
+    <a>Workshop</a>
+    <a>Sign In</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Write something worth reading.<br>Read something worth <em>your time.</em></h1>
+  <p>Writing competitions with real stakes. Film reviews with real structure. And a second life for the best writing buried in comment sections.</p>
+</div>
+
+<!-- CURRENT COMPETITION -->
+<div class="competition-feature">
+  <div class="comp-card">
+    <div class="comp-label">Current Competition — Round 1 Open</div>
+    <h2><em>The Machine Stops:</em> Technology and What We Lose</h2>
+    <p class="comp-description">In 1,500 words or fewer, write about a technology that changed something irreversibly — for better, for worse, or both. Personal essays, arguments, and narrative nonfiction all welcome. Judged by peer review.</p>
+    <div class="comp-meta">
+      <div class="meta-item">
+        <span class="meta-label">Entry Fee</span>
+        <span class="meta-value">$5</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Current Pool</span>
+        <span class="meta-value prize">$85 (17 entries)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Deadline</span>
+        <span class="meta-value">Mar 7, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Review Obligation</span>
+        <span class="meta-value">3 essays</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Word Limit</span>
+        <span class="meta-value">1,500</span>
+      </div>
+    </div>
+    <button class="comp-enter">Enter This Competition</button>
+  </div>
+</div>
+
+<!-- TWO COLUMN: TASTING NOTES + COMMENTS -->
+<div class="two-columns">
+  
+  <!-- TASTING NOTES -->
+  <div>
+    <div class="section-header">
+      <h3>Tasting Notes</h3>
+      <a href="#">View all reviews →</a>
+    </div>
+
+    <div class="tasting-note">
+      <div class="tasting-film">The Brutalist <span>(2024)</span></div>
+      <div class="tasting-reviewer">reviewed by M. Callahan</div>
+      <div class="tasting-scores">
+        <span class="score-pip">First Impression 4</span>
+        <span class="score-pip highlight-good">Visual 5</span>
+        <span class="score-pip highlight-good">Body 5</span>
+        <span class="score-pip">Structure 3</span>
+        <span class="score-pip">Finish 4</span>
+        <span class="score-pip highlight-gold">Aftertaste 5</span>
+      </div>
+      <p class="tasting-excerpt">"Three days later I'm still thinking about that concrete. The runtime felt indulgent at first — and then I realized the duration was the point. You have to sit inside it the way you sit inside a building."</p>
+    </div>
+
+    <div class="tasting-note">
+      <div class="tasting-film">Mickey 17 <span>(2025)</span></div>
+      <div class="tasting-reviewer">reviewed by T. Ngata</div>
+      <div class="tasting-scores">
+        <span class="score-pip highlight-good">First Impression 5</span>
+        <span class="score-pip">Visual 4</span>
+        <span class="score-pip">Body 3</span>
+        <span class="score-pip">Structure 3</span>
+        <span class="score-pip">Finish 4</span>
+        <span class="score-pip">Aftertaste 2</span>
+      </div>
+      <p class="tasting-excerpt">"Fun in the moment, gone by morning. Bong knows how to pour a crowd-pleaser but this one has no legs. You remember laughing but can't quite remember at what."</p>
+    </div>
+
+    <div class="tasting-note">
+      <div class="tasting-film">Nosferatu <span>(2024)</span></div>
+      <div class="tasting-reviewer">reviewed by R. Stein</div>
+      <div class="tasting-scores">
+        <span class="score-pip">First Impression 3</span>
+        <span class="score-pip highlight-good">Visual 5</span>
+        <span class="score-pip">Body 4</span>
+        <span class="score-pip">Structure 4</span>
+        <span class="score-pip">Finish 3</span>
+        <span class="score-pip highlight-gold">Aftertaste 5</span>
+      </div>
+      <p class="tasting-excerpt">"A Napoleon Dynamite in reverse — gorgeous to watch, satisfying in the theater, but it's the shadow imagery that follows you home and won't let you sleep."</p>
+    </div>
+  </div>
+
+  <!-- COMMENTS OF THE WEEK -->
+  <div>
+    <div class="section-header">
+      <h3>Comments of the Week</h3>
+      <a href="#">Submit a comment →</a>
+    </div>
+
+    <div class="comment-entry">
+      <div class="comment-source">Originally posted on YouTube</div>
+      <p class="comment-text">"The reason nobody builds starter homes anymore isn't because builders are greedy — it's because the fixed costs of permits, infrastructure hookups, and regulatory compliance are nearly identical for a 1,200 sq ft house and a 3,000 sq ft house. The profit margin on the small one disappears. You've regulated the affordable house out of existence."</p>
+      <div class="comment-context">On a video about the US housing crisis — submitted by the author</div>
+      <div class="comment-votes">◆ 142 upvotes</div>
+    </div>
+
+    <div class="comment-entry">
+      <div class="comment-source">Originally posted on Reddit — r/books</div>
+      <p class="comment-text">"The thing about Hemingway's short sentences isn't that they're simple. It's that each one is load-bearing. Remove any single sentence from the first page of A Farewell to Arms and the whole rhythm collapses. He's not writing simply — he's engineering."</p>
+      <div class="comment-context">In a thread about overrated authors — submitted by the author</div>
+      <div class="comment-votes">◆ 89 upvotes</div>
+    </div>
+
+    <div class="comment-entry">
+      <div class="comment-source">Originally posted on Hacker News</div>
+      <p class="comment-text">"Every time someone says 'just learn to code,' I think about my uncle who 'just learned to weld' in 1978. He was employed for 40 years. The mass migration into software engineering is creating the same oversupply dynamic that hollowed out every other 'safe' career path before it."</p>
+      <div class="comment-context">Discussion about tech layoffs — submitted by a friend</div>
+      <div class="comment-votes">◆ 217 upvotes</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider-line" style="max-width: 1100px; margin: 0 auto;">
+
+<!-- PAST WINNERS -->
+<div class="winners-strip">
+  <div class="section-header">
+    <h3>Recent Winners</h3>
+    <a href="#">Full archive →</a>
+  </div>
+  <div class="winner-cards">
+    <div class="winner-card">
+      <div class="winner-badge">1st Place — Feb 2026</div>
+      <div class="winner-title">"My Father's Hands Were Made for Smaller Things"</div>
+      <div class="winner-author">by Sarah Kwan · $20 prize</div>
+      <p class="winner-excerpt">A personal essay about watching a machinist father adapt to touchscreen interfaces at work, and what precision means when the tools change underneath you.</p>
+    </div>
+    <div class="winner-card">
+      <div class="winner-badge">1st Place — Jan 2026</div>
+      <div class="winner-title">"On the Impossibility of Returning to a Place That Still Exists"</div>
+      <div class="winner-author">by Daniel Okoro · $25 prize</div>
+      <p class="winner-excerpt">The author revisits Lagos after eleven years and finds everything physically intact but experientially unrecognizable. A meditation on memory as architecture.</p>
+    </div>
+    <div class="winner-card">
+      <div class="winner-badge">1st Place — Dec 2025</div>
+      <div class="winner-title">"Forty-Seven Minutes in a Costco Parking Lot"</div>
+      <div class="winner-author">by Meg Alcott · $20 prize</div>
+      <p class="winner-excerpt">What started as road rage became a conversation with a stranger about grief, retail therapy, and why Americans eat in their cars. Originally written for the prompt "Public Spaces."</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 — A place for writing that deserves to be read.</span>
+  <div class="footer-links">
+    <a href="#">How It Works</a>
+    <a href="#">Past Competitions</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
